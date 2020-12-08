@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Конвертер</title>
+    <style>
+        input {
+            width: 300px;
+            font-size: 13px;
+            padding: 6px 0 4px 10px;
+            border: 1px solid #cecece;
+            background: #F6F6f6;
+            border-radius: 8px;
+        }
+
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1 style = "text-align: center">Конвертер</h1>
+
+<form  action="#" th:action="@{/converter}" th:object="${request}" method="post">
+<p style="text-align: center">
+    <select  class="select-css" th:field="*{origValute}"  name="request"  >
+    <option th:each="currency : ${currencyList}"
+            th:value="${currency.getName()}"
+            th:text="${currency.getName()}"></option>
+
+</select>
+
+
+<select  class="select-css" th:field="*{targetValute}"   name="request" >
+     <option  th:each="currency : ${currencyList}"
+                th:value="${currency.getName()}"
+                th:text="${currency.getName()}"></option>
+</select>
+
+
+
+<p style="text-align: center"> <input type="number" name="from"  th:field="*{originalAmount}"/>  <input type="number" name="in" th:field="*{receivedAmount}" /></p>
+    <p style="text-align: center">   <input type="submit" value="Конвертировать">
+</form>
+
+</body>
+</html>

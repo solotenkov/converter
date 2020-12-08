@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <style>
+        input {
+            width: 300px;
+            font-size: 13px;
+            padding: 6px 0 4px 10px;
+            border: 1px solid #cecece;
+            background: #F6F6f6;
+            border-radius: 8px;
+        }
+
+    </style>
+
+    <title>Конвертер валют</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <div style="text-align: center">
+        <br><input placeholder="Логин" type="text" name="username"/> </div>
+        <br><div style="text-align: center"><input placeholder="Пароль" type="password" name="password"/> </div>
+    <br>
+    <div style="text-align: center"><input type="submit" value="Войти"/></div>
+</form>
+</body>
+</html>
